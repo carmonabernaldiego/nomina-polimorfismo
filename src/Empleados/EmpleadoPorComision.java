@@ -72,8 +72,16 @@ public class EmpleadoPorComision {
         return tarifaComision;
     } // fin del método obtenerTarifaComision
 
+    public double obtenerKM() {
+        return 0;
+    }
+
     public double obtenerLitrosGasolina() {
         return 0;
+    }
+
+    public String obtenerTipoGasolina() {
+        return "";
     }
 
     // calcula los ingresos

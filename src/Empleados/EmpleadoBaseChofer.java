@@ -1,23 +1,39 @@
 package Empleados;
 
 public class EmpleadoBaseChofer extends EmpleadoPorComision {
-    private double salarioBase; // salario base por semana// salario base por semana
+    private double salarioBase;
+    private double nKM;
     private String tipoGasolina;
     private double litrosGasolinaKM;
     private double diasViaticos;
 
-    //constructor por defecto
     public EmpleadoBaseChofer() {
     }
 
-    // constructor con seis argumentos
     public EmpleadoBaseChofer(String nombre, String apellido, String nss, double salario, String tipo, double km) {
         super (nombre, apellido, nss, 0, 0);
-        this.tipoGasolina = tipo;
-        establecerSalarioBase (salario); // valida y almacena el salario base
+        establecerTipoGasolina (tipo);
+        establecerSalarioBase (salario);
+        establecerKM (km);
         establecerLitrosGasolina (km);
         establecerDiasViaticos (km);
-    } // fin del constructor de EmpleadoBaseMasComision4 con seis argumentos// fin del constructor de EmpleadoBaseMasComision4 con seis argumentos
+    }
+
+    public void establecerKM(double km) {
+        nKM = km;
+    }
+
+    public double obtenerKM() {
+        return nKM + super.obtenerKM ();
+    }
+
+    public void establecerTipoGasolina(String tipoG) {
+        tipoGasolina = tipoG;
+    }
+
+    public String obtenerTipoGasolina() {
+        return tipoGasolina + super.obtenerTipoGasolina ();
+    }
 
     public void establecerLitrosGasolina(double km) {
         litrosGasolinaKM = km * 40 / 100;
@@ -28,25 +44,27 @@ public class EmpleadoBaseChofer extends EmpleadoPorComision {
     }
 
     public void establecerDiasViaticos(double km) {
-        diasViaticos = (km / 100);
+        if (km < 100) {
+            diasViaticos = .5;
+        } else {
+            diasViaticos = (km / 100);
+        }
     }
 
     public double obtenerDiasViaticos() {
         return diasViaticos;
     }
 
-    // establece el salario base
     public void establecerSalarioBase(double salario) {
         salarioBase = (salario < 0.0) ? 0.0 : salario;
-    } // fin del método establecerSalarioBase// fin del método establecerSalarioBase
+    }
 
-    // devuelve el salario base
     public double obtenerSalarioBase() {
         return salarioBase;
-    } // fin del método obtenerSalarioBase// fin del método obtenerSalarioBase
+    }
 
     public double costoViaticos() {
-        return obtenerDiasViaticos () * 400;
+            return obtenerDiasViaticos () * 400;
     }
 
     public double costoGasolina() {
@@ -62,14 +80,22 @@ public class EmpleadoBaseChofer extends EmpleadoPorComision {
         return 0;
     }
 
-    // calcula los ingresos
     public double ingresos() {
-        return obtenerSalarioBase () + costoGasolina () + costoViaticos () + super.ingresos ();
-    } // fin del método ingresos// fin del método ingresos
+        return obtenerSalarioBase () + ((costoGasolina () + costoViaticos ()) * 2) + super.ingresos ();
+    }
 
-    // devuelve representación String de EmpleadoBaseMasComision4
     public String toString() {
-        return String.format ("%s %s\n%s: %.2f\n%s: %.2f\n%s: %.2f", "Con Base (Chofer)",
-                super.toString (), "Sueldo base", obtenerSalarioBase (), "Litros", obtenerLitrosGasolina (), "Diás Viaticos", obtenerDiasViaticos ());
-    } // fin del método toString// fin del método toString
-} // fin de la clase EmpleadoBaseMasComision4
+        return String.format("%s: %s %s\n%s: %s\n%s: %.2f\n%s: %.2f\n%s: %s\n%s: %.2f\n%s: %.2f\n%s: %.2f\n%s: %.2f\n%s: %.2f\n%s: %.2f",
+                "Empleado con Base (Chofer)", obtenerPrimerNombre(), obtenerApellidoPaterno(),
+                "Numero de Seguro Social", obtenerNumeroSeguroSocial(),
+                "Recorrido en KM", obtenerKM(),
+                "Litros de Consumo", obtenerLitrosGasolina (),
+                "Tipo de Gasolina", obtenerTipoGasolina (),
+                "Costo Gasolina", costoGasolina (),
+                "Días Viaticos", obtenerDiasViaticos (),
+                "Costo Viaticos", costoViaticos (),
+                "Total Ida y Regreso", ((costoGasolina () + costoViaticos ()) * 2),
+                "Sueldo Base", obtenerSalarioBase (),
+                "Sueldo Base + Viaticos", ingresos ());
+    }
+}

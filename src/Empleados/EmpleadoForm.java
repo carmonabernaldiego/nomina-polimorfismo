@@ -125,7 +125,35 @@ public class EmpleadoForm extends JFrame {
         cbbxContrato.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-
+                if (cbbxContrato.getSelectedItem().equals("Seleccioné")) {
+                    desabilitar();
+                }
+                if (cbbxContrato.getSelectedItem().equals("Base")) {
+                    habilitar();
+                    txtKM.setEnabled (false);
+                    txtKM.setText ("");
+                    cbbxGasolina.setEnabled (false);
+                    cbbxGasolina.setSelectedItem ("Seleccioné");
+                    txtNombre.requestFocus();
+                }
+                if (cbbxContrato.getSelectedItem().equals("Base (Chofer)")) {
+                    habilitar();
+                    txtVentas.setEnabled (false);
+                    txtVentas.setText ("");
+                    txtTarifa.setEnabled (false);
+                    txtTarifa.setText ("");
+                    txtNombre.requestFocus();
+                }
+                if (cbbxContrato.getSelectedItem().equals("Comisión")) {
+                    habilitar();
+                    txtSalario.setEnabled(false);
+                    txtSalario.setText("");
+                    txtKM.setEnabled (false);
+                    txtKM.setText ("");
+                    cbbxGasolina.setEnabled (false);
+                    cbbxGasolina.setSelectedItem ("Seleccioné");
+                    txtNombre.requestFocus();
+                }
             }
         });
 
