@@ -1,6 +1,6 @@
 # polimorfismo-java
 
-Programa en Java
+Programa en Java.
 
 Aplicación grafica Nomina.
 
