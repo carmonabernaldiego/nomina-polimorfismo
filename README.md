@@ -2,4 +2,6 @@
 
 Programa en Java
 
-Aplicación grafica Nomina. Calcula la nómina de diferentes tipos de empleados, aplicando Polimorfismo.
+Aplicación grafica Nomina.
+
+Calcula la nómina de diferentes tipos de empleados, aplicando Polimorfismo.
