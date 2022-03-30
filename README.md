@@ -1,5 +1,4 @@
-# polimorfismo_java
-
+# nomina_polimorfismo
 Programación Orientada a Objetos.
 
 Aplicación grafica Nomina.
