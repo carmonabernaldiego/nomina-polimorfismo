@@ -1,4 +1,4 @@
-# nomina_polimorfismo
+# Nomina Polimorfismo
 Programación Orientada a Objetos.
 
 Aplicación grafica Nomina.
