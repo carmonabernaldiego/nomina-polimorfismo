@@ -1,5 +1,5 @@
 # Nómina Polimorfismo
-Programación Orientada a Objetos
+Programación Orientada a Objetos.
 
 Calcula la nómina de diferentes tipos de empleados, aplicando polimorfismo.
 
